@@ -21,6 +21,7 @@ namespace LinqIsBrokenTest
                 new Item { Id = 2, Name = "Puppy", TimeStamp = DateTime.Today.AddDays(-2) }
             };
 
+            //Linq using query-syntax
             var firstItems =
                 from e in items
                 group e by e.Id into g
@@ -28,18 +29,15 @@ namespace LinqIsBrokenTest
                         orderby e.TimeStamp
                         select e).First();
 
-            Console.WriteLine("Testing query syntax linq:\n");
-
-            TestLinq(firstItems);
-
-            Console.WriteLine("Testing method syntax linq:\n");
-
+            //Linq using method-syntax
             var firstItems2 = items
                 .GroupBy(i => i.Id)
-                .Select(g => g.OrderBy(i => i.TimeStamp)).First();
+                .Select(g => g.OrderBy(i => i.TimeStamp).First());
 
+            Console.WriteLine("Testing query-syntax linq:\n");
+            TestLinq(firstItems);
+            Console.WriteLine("Testing method-syntax linq:\n");
             TestLinq(firstItems2);
-
             Console.ReadLine();
         }
 
