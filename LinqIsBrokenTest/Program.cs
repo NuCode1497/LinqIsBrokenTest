@@ -1,0 +1,12 @@
+﻿using System;
+
+namespace LinqIsBrokenTest
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello World!");
+        }
+    }
+}
